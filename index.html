@@ -33,9 +33,30 @@
         </div>
       </div>
       <nav class="nav-links">
-        <a href="#program">Program</a>
-        <a href="#outcomes">Outcomes</a>
-        <a href="#apply">Apply</a>
+        <div class="nav-item">
+          <a href="#program">Program</a>
+          <div class="dropdown">
+            <a href="#program">Curriculum</a>
+            <a href="#outcomes">Outcomes</a>
+            <a href="#blog">Blog</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="#apply">Apply</a>
+          <div class="dropdown">
+            <a href="#apply">Brochure</a>
+            <a href="#upload">Uploads</a>
+            <a href="#schedule">Interview</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="#community">Community</a>
+          <div class="dropdown">
+            <a href="#media">Media</a>
+            <a href="#blog">Stories</a>
+            <a href="#newsletter">Newsletter</a>
+          </div>
+        </div>
         <a class="btn btn-ghost" href="#schedule">Schedule</a>
       </nav>
       <button class="nav-toggle" aria-label="Open menu">Menu</button>
@@ -210,9 +231,16 @@
           >
             <!-- Replace the action URL with your Google Form "formResponse" link. -->
             <!-- Replace entry.XXXX with the field IDs from your Google Form. -->
-            <div class="form-section">
-              <h3>Student Information</h3>
-              <div class="form-grid">
+            <div class="form-steps">
+              <div class="form-step active">
+                <h3>Get the brochure</h3>
+                <p class="form-note">
+                  Answer a few quick questions to unlock the full program
+                  brochure and interview scheduling.
+                </p>
+              </div>
+              <div class="form-step">
+                <h3>Student name</h3>
                 <label>
                   Student Name
                   <input type="text" name="entry.111111" required />
@@ -225,24 +253,16 @@
                   School
                   <input type="text" name="entry.333333" required />
                 </label>
+              </div>
+              <div class="form-step">
+                <h3>Student email</h3>
                 <label>
                   Student Email
                   <input type="email" name="entry.444444" required />
                 </label>
               </div>
-            </div>
-
-            <div class="form-section">
-              <h3>Parent / Guardian</h3>
-              <div class="form-grid">
-                <label>
-                  Parent Name
-                  <input type="text" name="entry.555555" required />
-                </label>
-                <label>
-                  Parent Email
-                  <input type="email" name="entry.666666" required />
-                </label>
+              <div class="form-step">
+                <h3>Phone details</h3>
                 <label>
                   Phone Number
                   <input type="tel" name="entry.777777" required />
@@ -252,32 +272,46 @@
                   <input type="text" name="entry.888888" required />
                 </label>
               </div>
-            </div>
-
-            <div class="form-section">
-              <h3>Additional Details</h3>
-              <div class="form-grid">
+              <div class="form-step">
+                <h3>Parent name</h3>
+                <label>
+                  Parent Name
+                  <input type="text" name="entry.555555" required />
+                </label>
+              </div>
+              <div class="form-step">
+                <h3>Parent email</h3>
+                <label>
+                  Parent Email
+                  <input type="email" name="entry.666666" required />
+                </label>
+              </div>
+              <div class="form-step">
+                <h3>How did you hear about us?</h3>
                 <label>
                   How did you hear about the program?
                   <input type="text" name="entry.999999" />
                 </label>
               </div>
-            </div>
-
-            <div class="form-section">
-              <h3>Optional uploads</h3>
-              <p class="form-note">
-                Google Forms handles file uploads. Use the upload link after you
-                submit this form.
-              </p>
-              <div class="upload-row">
-                <input type="file" disabled />
-                <a class="btn btn-outline" href="#upload">Open upload form</a>
+              <div class="form-step">
+                <h3>Schedule a call</h3>
+                <p class="form-note">
+                  You can book an interview after submitting your brochure
+                  request.
+                </p>
+                <a class="btn btn-outline" href="#schedule">
+                  View interview times
+                </a>
               </div>
             </div>
-
             <div class="form-actions">
-              <button class="btn btn-primary" type="submit">
+              <button class="btn btn-outline" type="button" id="prev-step">
+                Back
+              </button>
+              <button class="btn btn-primary" type="button" id="next-step">
+                Next
+              </button>
+              <button class="btn btn-primary hidden" type="submit" id="submit-step">
                 Get the brochure
               </button>
               <span class="form-meta">Takes less than 2 minutes.</span>
@@ -293,6 +327,43 @@
             <a class="btn btn-primary" href="assets/paideia-brochure.pdf" download>
               Download brochure
             </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="media" class="section alt">
+        <div class="section-title">
+          <h2>Media, social, and student stories</h2>
+          <p>
+            Share your journey, highlight your leadership, and connect with a
+            global community of future changemakers.
+          </p>
+        </div>
+        <div class="grid two">
+          <div class="media-card reveal">
+            <div class="media-frame">
+              <div class="play"></div>
+            </div>
+            <div>
+              <h3>Program overview video</h3>
+              <p>
+                Drop in your YouTube or Vimeo link to showcase the academy in 90
+                seconds.
+              </p>
+            </div>
+          </div>
+          <div class="social-card reveal">
+            <h3>Follow Paideia</h3>
+            <p>
+              Stay updated with student wins, leadership insights, and upcoming
+              cohorts.
+            </p>
+            <div class="social-row">
+              <a class="social-pill" href="#">Instagram</a>
+              <a class="social-pill" href="#">LinkedIn</a>
+              <a class="social-pill" href="#">YouTube</a>
+              <a class="social-pill" href="#">TikTok</a>
+            </div>
           </div>
         </div>
       </section>
@@ -336,6 +407,39 @@
           </a>
         </div>
       </section>
+
+      <section id="blog" class="section">
+        <div class="section-title">
+          <h2>Latest leadership insights</h2>
+          <p>
+            A curated feed of student achievements, mentor spotlights, and
+            leadership frameworks.
+          </p>
+        </div>
+        <div class="grid three">
+          <article class="blog-card reveal">
+            <h3>How to build a leadership portfolio</h3>
+            <p>
+              A practical guide to turning projects into compelling narratives.
+            </p>
+            <a class="text-link" href="#">Read more</a>
+          </article>
+          <article class="blog-card reveal">
+            <h3>Mentor spotlight: Strategic presence</h3>
+            <p>
+              Advice from global leaders on showing up with clarity and intent.
+            </p>
+            <a class="text-link" href="#">Read more</a>
+          </article>
+          <article class="blog-card reveal">
+            <h3>Student story: Impact in action</h3>
+            <p>
+              How one cohort launched a cross-campus sustainability initiative.
+            </p>
+            <a class="text-link" href="#">Read more</a>
+          </article>
+        </div>
+      </section>
     </main>
 
     <footer class="footer">
@@ -350,6 +454,9 @@
         <p>
           Cultivating the next generation of principled, globally aware leaders.
         </p>
+        <button class="btn btn-outline newsletter-trigger" id="newsletter">
+          Join newsletter
+        </button>
       </div>
       <div>
         <h4>Contact</h4>
@@ -363,6 +470,23 @@
         <p><a href="#schedule">Interview</a></p>
       </div>
     </footer>
+
+    <div class="modal hidden" id="newsletter-modal" aria-hidden="true">
+      <div class="modal-card">
+        <button class="modal-close" type="button" aria-label="Close">
+          Close
+        </button>
+        <h3>Join the Paideia newsletter</h3>
+        <p>
+          Receive leadership insights, cohort openings, and student success
+          stories.
+        </p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Email address" required />
+          <button class="btn btn-primary" type="submit">Join</button>
+        </form>
+      </div>
+    </div>
 
     <script src="app.js"></script>
   </body>
