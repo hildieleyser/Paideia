@@ -134,6 +134,7 @@ if (modalClose && newsletterModal) {
   modalClose.addEventListener("click", () => {
     newsletterModal.classList.add("hidden");
     newsletterModal.setAttribute("aria-hidden", "true");
+    localStorage.setItem("newsletterDismissed", "true");
   });
 }
 
@@ -145,7 +146,10 @@ if (newsletterModal) {
       localStorage.setItem("newsletterDismissed", "true");
     }
   });
-  setTimeout(showNewsletter, 8000);
+  const modalTimer = setTimeout(showNewsletter, 8000);
+  if (localStorage.getItem("newsletterDismissed")) {
+    clearTimeout(modalTimer);
+  }
 }
 
 if (newsletterForm && newsletterModal) {
@@ -156,6 +160,7 @@ if (newsletterForm && newsletterModal) {
     setTimeout(() => {
       newsletterModal.classList.add("hidden");
       newsletterModal.setAttribute("aria-hidden", "true");
+      localStorage.setItem("newsletterDismissed", "true");
     }, 800);
   });
 }
