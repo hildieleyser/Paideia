@@ -682,6 +682,11 @@ input:focus {
   gap: 0.8rem;
 }
 
+#newsletter-success {
+  display: none;
+  color: var(--ink-soft);
+}
+
 .hero-gallery {
   display: grid;
   grid-template-columns: repeat(2, minmax(140px, 1fr));

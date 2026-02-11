@@ -116,6 +116,8 @@ if (heroCard || orbit) {
 const newsletterModal = document.getElementById("newsletter-modal");
 const newsletterTrigger = document.querySelector(".newsletter-trigger");
 const modalClose = document.querySelector(".modal-close");
+const newsletterForm = document.getElementById("newsletter-form");
+const newsletterSuccess = document.getElementById("newsletter-success");
 
 const showNewsletter = () => {
   if (!newsletterModal) return;
@@ -132,7 +134,6 @@ if (modalClose && newsletterModal) {
   modalClose.addEventListener("click", () => {
     newsletterModal.classList.add("hidden");
     newsletterModal.setAttribute("aria-hidden", "true");
-    localStorage.setItem("newsletterDismissed", "true");
   });
 }
 
@@ -145,4 +146,16 @@ if (newsletterModal) {
     }
   });
   setTimeout(showNewsletter, 8000);
+}
+
+if (newsletterForm && newsletterModal) {
+  newsletterForm.addEventListener("submit", () => {
+    if (newsletterSuccess) {
+      newsletterSuccess.style.display = "block";
+    }
+    setTimeout(() => {
+      newsletterModal.classList.add("hidden");
+      newsletterModal.setAttribute("aria-hidden", "true");
+    }, 800);
+  });
 }
