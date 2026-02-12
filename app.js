@@ -122,8 +122,17 @@ const newsletterSuccess = document.getElementById("newsletter-success");
 const showNewsletter = () => {
   if (!newsletterModal) return;
   if (localStorage.getItem("newsletterDismissed")) return;
+  newsletterModal.style.display = "grid";
   newsletterModal.classList.remove("hidden");
   newsletterModal.setAttribute("aria-hidden", "false");
+};
+
+const hideNewsletter = () => {
+  if (!newsletterModal) return;
+  newsletterModal.classList.add("hidden");
+  newsletterModal.setAttribute("aria-hidden", "true");
+  newsletterModal.style.display = "none";
+  localStorage.setItem("newsletterDismissed", "true");
 };
 
 if (newsletterTrigger) {
@@ -132,24 +141,22 @@ if (newsletterTrigger) {
 
 if (modalClose && newsletterModal) {
   modalClose.addEventListener("click", () => {
-    newsletterModal.classList.add("hidden");
-    newsletterModal.setAttribute("aria-hidden", "true");
-    localStorage.setItem("newsletterDismissed", "true");
+    hideNewsletter();
   });
 }
 
 if (newsletterModal) {
   newsletterModal.addEventListener("click", (event) => {
-    if (event.target === newsletterModal) {
-      newsletterModal.classList.add("hidden");
-      newsletterModal.setAttribute("aria-hidden", "true");
-      localStorage.setItem("newsletterDismissed", "true");
-    }
+    if (event.target === newsletterModal) hideNewsletter();
+    if (event.target.closest(".modal-close")) hideNewsletter();
   });
   const modalTimer = setTimeout(showNewsletter, 8000);
   if (localStorage.getItem("newsletterDismissed")) {
     clearTimeout(modalTimer);
   }
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") hideNewsletter();
+  });
 }
 
 if (newsletterForm && newsletterModal) {
@@ -158,9 +165,7 @@ if (newsletterForm && newsletterModal) {
       newsletterSuccess.style.display = "block";
     }
     setTimeout(() => {
-      newsletterModal.classList.add("hidden");
-      newsletterModal.setAttribute("aria-hidden", "true");
-      localStorage.setItem("newsletterDismissed", "true");
+      hideNewsletter();
     }, 800);
   });
 }
